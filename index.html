@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пайка — ремонт телефонов и ноутбуков</title>
+<meta name="description" content="Ремонт телефонов, ноутбуков и планшетов: узнайте цену и срок до визита, бесплатная диагностика.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --pcb: #0E6B5C; --pcb-2: #0A5246; --mint: #EAF4F1; --white: #FBFDFC; --coral: #FF6B4A; --dark: #1C2421; --muted: #5B6863; --line: #CFE0DA; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; font-family: "Onest", system-ui, sans-serif; color: var(--dark); background: var(--white); line-height: 1.55; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { line-height: 1.12; margin: 0; font-weight: 800; letter-spacing: -.015em; }
+h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 14px; }
+.lead { color: var(--muted); max-width: 60ch; margin: 0 0 26px; }
+header { background: var(--pcb); color: #fff; }
+.nav { display: flex; align-items: center; gap: 24px; height: 64px; }
+.logo { font-weight: 800; font-size: 22px; text-decoration: none; display: flex; gap: 10px; align-items: center; }
+.nav nav { display: flex; gap: 22px; margin-left: auto; }
+.nav nav a { text-decoration: none; opacity: .85; }
+.call { background: #fff; color: var(--pcb); text-decoration: none; font-weight: 700; padding: 9px 16px; border-radius: 10px; }
+@media (max-width: 820px) { .nav nav { display: none; } .call { margin-left: auto; } }
+/* Герой: подбор цены — главная фишка страницы */
+.hero { color: #fff; padding: 52px 0 64px;
+background: radial-gradient(circle at 85% 20%, rgba(255,255,255,.07) 0 2px, transparent 3px) 0 0 / 28px 28px, var(--pcb); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; }
+.hero h1 { font-size: clamp(34px, 5.4vw, 58px); }
+.hero p { color: #CFE7E0; font-size: 18px; max-width: 42ch; margin: 18px 0 0; }
+.picker { background: #fff; color: var(--dark); border-radius: 22px; padding: 26px; box-shadow: 0 24px 50px rgba(0,0,0,.22); }
+.picker h3 { font-size: 20px; margin-bottom: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip { font: inherit; font-weight: 600; border: 2px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 14px; cursor: pointer; color: var(--dark); }
+.chip[aria-pressed="true"] { border-color: var(--pcb); background: var(--mint); color: var(--pcb); }
+.answer { background: var(--mint); border-radius: 16px; padding: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.answer span { color: var(--muted); font-size: 14px; }
+.answer strong { display: block; font-size: 26px; color: var(--pcb); }
+.answer .btn { grid-column: 1 / -1; text-align: center; margin-top: 6px; }
+.btn { display: inline-block; padding: 14px 22px; border-radius: 12px; font: inherit; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; }
+.btn-main { background: var(--coral); color: #fff; }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+section { padding: 72px 0; }
+.why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.why div { border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+.why b { display: block; font-size: 18px; margin-bottom: 4px; }
+.why span { color: var(--muted); font-size: 15px; }
+@media (max-width: 860px) { .why { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .why { grid-template-columns: 1fr; } }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 14px 10px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 500; font-size: 14px; }
+td:last-child, th:last-child { text-align: right; white-space: nowrap; }
+td b { color: var(--pcb); }
+.table-wrap { overflow-x: auto; }
+.bring { background: var(--dark); color: #fff; border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; }
+.bring p { color: #B7C4BF; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: grid; gap: 6px; font-size: 14px; color: #B7C4BF; }
+input, select { font: inherit; padding: 13px 14px; border-radius: 10px; border: 0; background: #fff; color: var(--dark); }
+.full { grid-column: 1 / -1; }
+.ok { display: none; background: var(--coral); padding: 14px; border-radius: 10px; font-weight: 700; }
+.note { font-size: 13px; color: #8E9C97; margin: 0; }
+@media (max-width: 860px) { .bring { grid-template-columns: 1fr; padding: 26px; } form { grid-template-columns: 1fr; } }
+.contacts { display: flex; flex-wrap: wrap; gap: 18px 56px; }
+.contacts span { display: block; color: var(--muted); font-size: 14px; }
+.contacts b { font-size: 19px; }
+footer { border-top: 1px solid var(--line); padding: 28px 0; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 30px; }
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="logo" href="#top"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="7" y="2" width="12" height="22" rx="3" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M13 7 L10 14 H14 L12 20" stroke="#FF6B4A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Пайка</a>
+<nav aria-label="Разделы"><a href="#prices">Цены</a><a href="#bring">Сдать в ремонт</a><a href="#contacts">Контакты</a></nav>
+<a class="call" href="tel:+70000000000">Позвонить</a>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<h1>Ремонт телефонов и ноутбуков за один день</h1>
+<p>Узнайте цену и срок прямо здесь — ещё до того, как придёте. Диагностика бесплатная, гарантия до 6 месяцев.</p>
+</div>
+<div class="picker" aria-live="polite">
+<h3>Что сломалось?</h3>
+<div class="chips" id="devices" role="group" aria-label="Устройство"></div>
+<div class="chips" id="problems" role="group" aria-label="Неисправность"></div>
+<div class="answer">
+<div><span>Цена</span><strong id="aPrice">—</strong></div>
+<div><span>Срок</span><strong id="aTime">—</strong></div>
+<a class="btn btn-main" href="#bring">Записаться на ремонт</a>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap why">
+<div><b>Бесплатно</b><span>диагностика за 15 минут при вас</span></div>
+<div><b>До 6 месяцев</b><span>гарантия на замену деталей</span></div>
+<div><b>Цена до ремонта</b><span>называем сразу и не меняем</span></div>
+<div><b>Курьер</b><span>заберём и привезём технику по городу</span></div>
+</div>
+</section>
+<section id="prices" style="padding-top:0">
+<div class="wrap">
+<h2>Цены</h2>
+<p class="lead">Пример прайса — на вашем сайте будут ваши услуги и цены.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Услуга</th><th>Срок</th><th>Цена</th></tr></thead>
+<tbody id="priceTable"></tbody>
+</table></div>
+</div>
+</section>
+<section id="bring" style="padding-top:0">
+<div class="wrap">
+<div class="bring">
+<div>
+<h2>Сдать в ремонт</h2>
+<p>Оставьте заявку — перезвоним, уточним поломку и скажем, когда приходить. Можем забрать курьером.</p>
+</div>
+<form id="bringForm">
+<label>Имя<input required autocomplete="name"></label>
+<label>Телефон<input type="tel" required autocomplete="tel" placeholder="+7"></label>
+<label>Устройство<input placeholder="Например, iPhone 12"></label>
+<label>Как передать<select><option>Принесу сам</option><option>Нужен курьер</option></select></label>
+<button class="btn btn-main full" type="submit">Отправить заявку</button>
+<div class="ok full" id="ok" role="status">Это пример сайта: на вашем сайте заявка сразу придёт вам в Telegram.</div>
+<p class="note full">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+</form>
+</div>
+</div>
+</section>
+<section id="contacts" style="padding-top:0">
+<div class="wrap">
+<h2>Контакты</h2>
+<div class="contacts">
+<div><span>Адрес</span><b>ул. Примерная, 1</b></div>
+<div><span>Телефон</span><b><a href="tel:+70000000000">+7 (000) 000-00-00</a></b></div>
+<div><span>Часы работы</span><b>Ежедневно 10:00 — 20:00</b></div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<span>«Пайка» — пример сайта для сервиса по ремонту техники. Название и адрес вымышленные.</span>
+<span>Хотите такой сайт для своего сервиса? <a href="https://t.me/artem_petoan">Напишите в Telegram</a></span>
+</div>
+</footer>
+<script>
+const DATA = {
+"Телефон": [["Замена экрана", "от 2 500 ₽", "1–2 часа"], ["Замена аккумулятора", "от 1 200 ₽", "40 минут"], ["Не заряжается", "от 900 ₽", "1 час"], ["Попала вода", "от 1 500 ₽", "1–2 дня"]],
+"Ноутбук": [["Чистка и замена термопасты", "от 1 500 ₽", "1 день"], ["Замена матрицы", "от 3 500 ₽", "1–2 дня"], ["Не включается", "от 1 800 ₽", "1–3 дня"], ["Замена клавиатуры", "от 2 000 ₽", "1 день"]],
+"Планшет": [["Замена стекла", "от 2 200 ₽", "1 день"], ["Замена аккумулятора", "от 1 600 ₽", "2 часа"], ["Не заряжается", "от 1 000 ₽", "1 час"]]
+};
+let dev = "Телефон", prob = 0;
+const devBox = document.getElementById("devices"), probBox = document.getElementById("problems");
+function chip(text, pressed, onClick) { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = text; b.setAttribute("aria-pressed", pressed); b.onclick = onClick; return b; }
+function render() {
+devBox.replaceChildren(...Object.keys(DATA).map(d => chip(d, d === dev, () => { dev = d; prob = 0; render(); })));
+probBox.replaceChildren(...DATA[dev].map((p, i) => chip(p[0], i === prob, () => { prob = i; render(); })));
+const [, price, time] = DATA[dev][prob];
+document.getElementById("aPrice").textContent = price;
+document.getElementById("aTime").textContent = time;
+}
+render();
+document.getElementById("priceTable").innerHTML = Object.entries(DATA).flatMap(([d, rows]) =>
+rows.map(([n, p, t]) => `<tr><td>${d}: ${n.toLowerCase()}</td><td>${t}</td><td><b>${p}</b></td></tr>`)).join("");
+document.getElementById("bringForm").addEventListener("submit", e => { e.preventDefault(); document.getElementById("ok").style.display = "block"; });
+</script>
+</body>
+</html>
